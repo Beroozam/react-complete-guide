@@ -8,7 +8,9 @@ class App extends Component {
       {name : "Max" , age:28},
       {name : "Menu" , age:"19"},
       {name: "Stephanie" , age:"40"}
-    ]
+    ],
+    otherState: "some other value",
+    showPersons:false
   }
 
   switchNameHandler = (event) => {
@@ -30,28 +32,41 @@ class App extends Component {
       ]
     })
   }
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons:!doesShow})
+  }
+  
   render(){
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <h1>Another heading</h1>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person 
-          click={() => this.switchNameHandler("max!")} 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age} 
-        />
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          changed={this.nameChangedHandler}
-        >
-          THIS IS A TEST FOR CHILDREN BY HTML TAGS
-        </Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        <button onClick={this.togglePersonsHandler}>Switch Name</button>
+        {
+          this.state.showPersons === true ?
+          <div>
+            <Person 
+              name={this.state.persons[0].name} 
+              age={this.state.persons[0].age} 
+              click={this.switchNameHandler} 
+            />
+            <Person 
+              name={this.state.persons[1].name} 
+              age={this.state.persons[1].age}
+              changed={this.nameChangedHandler}
+            >
+              THIS IS A TEST FOR CHILDREN BY HTML TAGS
+            </Person>
+            <Person 
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            />
+          </div> : null
+        }
       </div>
     );
-    // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Does this work now?'));
   }
 
 }
