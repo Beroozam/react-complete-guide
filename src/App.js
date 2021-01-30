@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import './App.css';
 import Person from './Person/person'
+import Radium from 'radium'
 
 class App extends Component {
   state = {
@@ -46,6 +47,18 @@ class App extends Component {
   }
   
   render(){
+    const style={
+      backgroundColor:'green',
+      color:'#fff',
+      padding:'10px 15px',
+      fontFamily:'system-ui',
+      fontWeight:'bold',
+      border:'none',
+      ':hover':{
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
+    }
     let persons = null;
     if(this.state.showPersons){
       persons = (
@@ -58,30 +71,28 @@ class App extends Component {
                       key={person.id}
                       changed={(event) => this.nameChangedHandler(event,person.id)} />
           })}
-          {/* <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age} 
-            click={this.switchNameHandler} 
-          />
-          <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            changed={this.nameChangedHandler}
-          >
-            THIS IS A TEST FOR CHILDREN BY HTML TAGS
-          </Person>
-          <Person 
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          /> */}
         </div> 
       )
+          style.backgroundColor='red';
+          style[':hover'] = {
+            backgroundColor: 'salmon',
+            color: 'black'
+          }
     }
+
+    const classes = [];
+    if(this.state.persons.length <= 2){
+      classes.push('red') // classes = ['red']
+    }
+    if(this.state.persons.length <= 1){
+      classes.push('bold') // classes = ['red' , 'bold']
+    }
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <h1>Another heading</h1>
-        <button onClick={this.togglePersonsHandler}>Switch Name</button>
+        <p className={classes.join(' ')}>This is really working!</p>
+        <button onClick={this.togglePersonsHandler} style={style}>Switch Name</button>
         {persons}
       </div>
     );
@@ -89,4 +100,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default Radium(App);
