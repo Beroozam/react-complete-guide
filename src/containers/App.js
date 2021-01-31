@@ -1,7 +1,8 @@
 import React, { Component} from 'react';
 // import './App.css';
 import classes from './App.css'
-import Person from './Person/person'
+import Person from '../components/Persons/Person/person'
+
 
 class App extends Component {
   state = {
@@ -60,6 +61,7 @@ class App extends Component {
                       age={person.age}
                       key={person.id}
                       changed={(event) => this.nameChangedHandler(event,person.id)} />
+                    
           })}
         </div> 
       )
@@ -78,7 +80,7 @@ class App extends Component {
       <div className={classes.App}>
         <h1>Hi, I'm a React App</h1>
         <p className={assignedClasses.join(' ')}>This is really working!</p>
-        <button className={btnClass} onClick={this.togglePersonsHandler}>Switch Name</button>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
         {persons}
       </div>
     );
