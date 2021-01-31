@@ -1,9 +1,6 @@
 .App {
   text-align: center;
 }
-.first{
-  color:red;
-}
 
 .red{
   color:red;
@@ -13,7 +10,7 @@
   font-weight: bold;
 }
 
-.button{
+.App button{
   background-color:green;
   color:#fff;
   padding:10px 15px;
@@ -23,8 +20,16 @@
   transition:all .4s ease-in-out;
 }
 
-.button:hover{
+.App button:hover{
   background-color:lightgreen;
   color:black;
   transition:all .4s ease-in-out;
+}
+
+.App button.Red{
+  background-color: red;
+}
+
+.App button.Red:hover{
+  background-color: salmon;
 }
