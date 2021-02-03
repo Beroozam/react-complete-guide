@@ -7,6 +7,7 @@ class Persons extends PureComponent {
     //     return state;
     // }
 
+<<<<<<< HEAD
     // shouldComponentUpdate(nextProps,nextState){
     //     console.log('[Persons.js] shouldComponentUpdate');
     //     if( 
@@ -19,6 +20,17 @@ class Persons extends PureComponent {
     //         return false;
     //     }
     // }
+=======
+    shouldComponentUpdate(nextProps,nextState){
+        console.log('[Persons.js] shouldComponentUpdate');
+        // if( nextProps.persons !== this.props.persons){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
+        return true;
+    }
+>>>>>>> 17c641a701bce9675a360135cf7d9157d42f0869
 
     getSnapshotBeforeUpdate(prevProps,prevState){
         console.log('[Persons.js] getSnapshotBeforeUpdate')
